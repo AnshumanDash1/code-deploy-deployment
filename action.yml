@@ -38,7 +38,10 @@ outputs:
     description: 'testing some text output'
     
 runs:
-  using: 'ubuntu'
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ s3_bucket_name }}
 
 
 
