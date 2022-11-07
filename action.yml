@@ -1,13 +1,63 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+# name: 'Hello World'
+# description: 'Greet someone and record the time'
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
+# runs:
+#   using: 'node16'
+#   main: 'index.js'
+
+name: 'Code deployment start'
+description: 'Start up a deployment through code deploy'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  s3_bucket_name:
+    description: 'name of the s3 bucket'
     required: true
-    default: 'World'
+  s3_bucket_location:
+    description: 'location of s3 bucket'
+    required: true
+  description_for_deployment:
+    required: true
+  application_name:
+    required: true
+  deployment_group_name:
+    required: true
+  deployment_config_name:
+    required: true
+  bundle_type:
+    required: false
+    default: 'zip'
+    
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  test_output:
+    description: 'testing some text output'
+    
 runs:
-  using: 'node16'
-  main: 'index.js'
+  using: 'ubuntu'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+  
