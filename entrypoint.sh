@@ -9,7 +9,7 @@ echo $test_output_inEntryPoint : echos bucket name through bash var
 
 # echo "::set-output name=test_output_inEntryPoint::$test_output_inEntryPoint"
 
-echo "{name}={test_output_inEntryPoint}" >> $GITHUB_OUTPUT
+echo "testName=test_output_inEntryPoint" >> $GITHUB_OUTPUT
 echo $GITHUB_OUTPUT
 
 echo "Should have a line above this"
