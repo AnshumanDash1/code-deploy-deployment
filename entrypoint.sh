@@ -2,8 +2,8 @@
 
 echo "this is a test"
 
-echo ${INPUT_s3_bucket_name}
+echo ${INPUT_S3_BUCKET_NAME}
 
-echo "if this shows up, line 5 was skipped."
+echo "::set-output name=test_output::${INPUT_TEST_OUTPUT}"
 
-# echo "::set-output name=test_output::$test_output"
+echo "Should have a line above this"
