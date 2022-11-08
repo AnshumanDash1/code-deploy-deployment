@@ -15,12 +15,6 @@
 name: 'Code deployment start'
 description: 'Start up a deployment through code deploy'
 inputs:
-  s3_bucket_name:
-    description: 'name of the s3 bucket'
-    required: true
-  s3_bucket_location:
-    description: 'location of s3 bucket'
-    required: true
   description_for_deployment:
     required: true
   application_name:
@@ -33,8 +27,8 @@ inputs:
   bundle_type:
     required: false
     default: 'zip'
-  s3_bucket_full_path:
-    required: false
+  s3_bucket_arn:
+    required: true
     
 # outputs:
 #   test_output:
