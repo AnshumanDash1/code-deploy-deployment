@@ -28,7 +28,8 @@ inputs:
   deployment_group_name:
     required: true
   deployment_config_name:
-    required: true
+    required: false
+    default: CodeDeployDefault.OneAtATime
   bundle_type:
     required: false
     default: 'zip'
