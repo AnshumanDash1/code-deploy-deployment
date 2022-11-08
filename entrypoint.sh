@@ -2,7 +2,7 @@
 
 echo "this is a test"
 
-echo ${{ s3_bucket_name }}
+echo ${INPUT_S3_BUCKET_NAME}
 
 echo "if this shows up, line 5 was skipped."
 
