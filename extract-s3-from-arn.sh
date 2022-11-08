@@ -1,7 +1,7 @@
 #!/bin/bash
 ## separating the bucket name and key from full path name:
 
-arn=${INPUT_S3_BUCKET_FULL_PATH}
+arn=${INPUT_S3_BUCKET_ARN}
 prefix=s3://
 pathName=$(echo $arn | sed "s,$prefix,,")
 
