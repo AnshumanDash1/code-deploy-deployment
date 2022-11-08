@@ -33,6 +33,8 @@ inputs:
   bundle_type:
     required: false
     default: 'zip'
+  s3_bucket_full_path:
+    required: false
     
 # outputs:
 #   test_output:
