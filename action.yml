@@ -33,15 +33,15 @@ inputs:
 #     required: false
 #     default: 'zip'
     
-outputs:
-  test_output:
-    description: 'testing some text output'
+# outputs:
+#   test_output:
+#     description: 'testing some text output'
     
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ s3_bucket_name }}
+#   args:
+#     - ${{ s3_bucket_name }}
 
 
 
