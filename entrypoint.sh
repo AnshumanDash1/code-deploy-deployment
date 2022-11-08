@@ -4,6 +4,11 @@ echo "this is a test"
 
 echo ${INPUT_S3_BUCKET_NAME}
 
-echo "::set-output name=test_output::${INPUT_TEST_OUTPUT}"
+test_output_inEntryPoint=${INPUT_S3_BUCKET_NAME}
+echo $test_output_inEntryPoint
+
+echo "::set-output name=test_output_inEntryPoint::$test_output_inEntryPoint"
+
+# echo "{name}=
 
 echo "Should have a line above this"
