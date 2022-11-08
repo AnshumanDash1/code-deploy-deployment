@@ -33,9 +33,9 @@ inputs:
 #     required: false
 #     default: 'zip'
     
-# outputs:
-#   test_output:
-#     description: 'testing some text output'
+outputs:
+  test_output:
+    description: 'testing some text output. This should show as output.'
     
 runs:
   using: 'docker'
