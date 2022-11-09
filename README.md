@@ -1,6 +1,6 @@
-# Hello world javascript action
+# Start code deploy deployment action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action will start a code deploy deployment.
 
 ## Inputs
 
