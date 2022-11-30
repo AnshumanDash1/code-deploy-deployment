@@ -1,18 +1,40 @@
-# Base image
-FROM alpine:latest
+# FROM ubuntu:22.04
 
-# installes required packages for our script
-RUN	apk add --no-cache \
-  bash \
-  ca-certificates \
-  curl \
-  jq
+# COPY entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
 
-# Copies your code file  repository to the filesystem
+# ENTRYPOINT ["/entrypoint.sh"]
+
+FROM node:14-alpine
+
+# Install packages
+RUN apk update && apk add --update --no-cache \
+    git \
+    bash \
+    curl \
+    openssh \
+    python3 \
+    py3-pip \
+    py-cryptography \
+    wget \
+    curl
+
+RUN apk --no-cache add --virtual builds-deps build-base python3
+
+# Update NPM
+RUN npm config set unsafe-perm true
+RUN npm update -g
+
+# Install AWSCLI
+RUN pip install --upgrade pip && \
+    pip install --upgrade awscli
+
+# Install Serverless Framework
+RUN npm install -g serverless
+
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh 
+COPY extract-s3-from-arn.sh /extract-s3-from-arn.sh
+RUN chmod +x /extract-s3-from-arn.sh
 
-# change permission to execute the script and
-RUN chmod +x /entrypoint.sh
-
-# file to execute when the docker container starts up
 ENTRYPOINT ["/entrypoint.sh"]

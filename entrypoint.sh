@@ -1,21 +1,18 @@
 #!/bin/bash
 
 echo "the entrypoint.sh file started!"
-## separating the bucket name and key from full path name:
 
 
-# echo "::set-output name=test_output_inEntryPoint::$test_output_inEntryPoint"
+./extract-s3-from-arn.sh
 
-# echo "testName=test_output_inEntryPoint" >> $GITHUB_OUTPUT
-# echo $GITHUB_OUTPUT
+echo $s3_bucket_name : echos the bucket name through input
 
-# #why is aws cli not already installed? 
-# sudo yum -y update 
-# sudo yum -y install aws-cli
+echo $s3_location : echos bucket name through bash var
+
+
+aws s3 ls
 
 ## start of the code deploy section
-s3_bucket_name=${INPUT_S3_BUCKET_NAME}
-s3_location=${INPUT_S3_BUCKET_LOCATION}
 deploy_desc=${INPUT_DESCRIPTION_FOR_DEPLOYMENT}
 app_name=${INPUT_APPLICATION_NAME}
 deploy_name=${INPUT_DEPLOYMENT_GROUP_NAME}
@@ -30,6 +27,5 @@ aws deploy create-deployment \
   --deployment-group-name $deploy_name \
   --deployment-config-name $deploy_config \
   --s3-location bucket=$s3_bucket_name,key=$s3_location,bundleType=$bundle_type,eTag=$ETAG
-  
-  echo "entrypoint.sh file finished."
+
 
