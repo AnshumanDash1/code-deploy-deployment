@@ -34,7 +34,7 @@ aws deploy create-deployment \
   --description $deploy_desc \
   --application-name $app_name \
   --deployment-group-name $deploy_name \
-  --deployment-config-name $deploy_config \
+  --deployment-config-name $deploy_config_name \
   --s3-location bucket=$s3_bucket_name,key=$s3_location,bundleType=$bundle_type,eTag=$ETAG
 
 
