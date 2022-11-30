@@ -33,7 +33,7 @@ RUN pip install --upgrade pip && \
 RUN npm install -g serverless
 
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-    chmod +x /extract-s3-from-arn.sh
+RUN chmod +x /entrypoint.sh 
+RUN chmod +x /extract-s3-from-arn.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
