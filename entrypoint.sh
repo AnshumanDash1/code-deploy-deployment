@@ -3,13 +3,22 @@
 echo "the entrypoint.sh file started!"
 
 
-./extract-s3-from-arn.sh
+## separating the bucket name and key from full path name:
 
+arn=${INPUT_S3_BUCKET_ARN}
+prefix=s3://
+pathName=$(echo $arn | sed "s,$prefix,,")
+
+s3_bucket_name=$( echo $pathName | sed 's,/.*,,' )
+
+s3_location=$( echo $pathName | sed "s,$bucket_name\/,," )
+
+# testing through echo cmds
 echo $s3_bucket_name : echos the bucket name through input
 
 echo $s3_location : echos bucket name through bash var
 
-
+#testing aws cli 
 aws s3 ls
 
 ## start of the code deploy section
