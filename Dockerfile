@@ -34,6 +34,7 @@ RUN npm install -g serverless
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh 
+COPY extract-s3-from-arn.sh /extract-s3-from-arn.sh
 RUN chmod +x /extract-s3-from-arn.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
