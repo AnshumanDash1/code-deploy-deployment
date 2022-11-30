@@ -2,11 +2,13 @@
 
 echo "the entrypoint.sh file started!"
 
+
 ./extract-s3-from-arn.sh
 
 echo $s3_bucket_name : echos the bucket name through input
 
 echo $s3_location : echos bucket name through bash var
+
 
 aws s3 ls
 
@@ -25,7 +27,5 @@ aws deploy create-deployment \
   --deployment-group-name $deploy_name \
   --deployment-config-name $deploy_config \
   --s3-location bucket=$s3_bucket_name,key=$s3_location,bundleType=$bundle_type,eTag=$ETAG
-
-
 
 
