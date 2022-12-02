@@ -1,51 +1,40 @@
-# # Base image
-# FROM ubuntu:14.04
+# FROM ubuntu:22.04
 
-# # installes required packages for our script
-# RUN	apk add --no-cache \
-#   bash \
-#   ca-certificates \
-#   curl \
-#   jq
-
-# # Copies your code file  repository to the filesystem
 # COPY entrypoint.sh /entrypoint.sh
-
-# # change permission to execute the script and
 # RUN chmod +x /entrypoint.sh
 
-#
-# Ubuntu Dockerfile
-#
-# https://github.com/dockerfile/ubuntu
-#
+# ENTRYPOINT ["/entrypoint.sh"]
 
-# Pull base image.
-FROM ubuntu:14.04
+FROM node:14-alpine
 
-# Install.
-RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y build-essential && \
-  apt-get install -y software-properties-common && \
-  apt-get install -y byobu curl git htop man unzip vim wget && \
-  rm -rf /var/lib/apt/lists/*
+# Install packages
+RUN apk update && apk add --update --no-cache \
+    git \
+    bash \
+    curl \
+    openssh \
+    python3 \
+    py3-pip \
+    py-cryptography \
+    wget \
+    curl
 
-# Add files.
-ADD root/.bashrc /root/.bashrc
-ADD root/.gitconfig /root/.gitconfig
-ADD root/.scripts /root/.scripts
+RUN apk --no-cache add --virtual builds-deps build-base python3
 
-# Set environment variables.
-ENV HOME /root
+# Update NPM
+RUN npm config set unsafe-perm true
+RUN npm update -g
 
-# Define working directory.
-WORKDIR /root
+# Install AWSCLI
+RUN pip install --upgrade pip && \
+    pip install --upgrade awscli
 
-# Define default command.
-CMD ["bash"]
+# Install Serverless Framework
+RUN npm install -g serverless
 
-# file to execute when the docker container starts up
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh 
+COPY extract-s3-from-arn.sh /extract-s3-from-arn.sh
+RUN chmod +x /extract-s3-from-arn.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
