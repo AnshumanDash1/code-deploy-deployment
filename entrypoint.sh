@@ -18,8 +18,6 @@ echo $s3_bucket_name : echos the bucket name through input
 
 echo $s3_location : echos bucket name through bash var
 
-#testing aws cli 
-aws s3 ls
 
 ## start of the code deploy section
 deploy_desc=${INPUT_DESCRIPTION_FOR_DEPLOYMENT}
