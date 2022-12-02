@@ -23,11 +23,17 @@ echo $s3_location : echos bucket name through bash var
 temp_deploy_desc=${INPUT_DESCRIPTION_FOR_DEPLOYMENT}
 deploy_desc="\"$temp_deploy_desc\""
 
+echo $deploy_desc
+
 app_name=${INPUT_APPLICATION_NAME}
 deploy_name=${INPUT_DEPLOYMENT_GROUP_NAME}
 deploy_config_name=${INPUT_DEPLOYMENT_CONFIG_NAME}
 bundle_type=${INPUT_BUNDLE_TYPE}
 
+echo $app_name
+echo $deploy_name
+echo $deploy_config
+echo $bundle_type
 
 ETAG=`aws s3api head-object --bucket $s3_bucket_name --key $s3_location --query ETag --output text`
 aws deploy create-deployment \
