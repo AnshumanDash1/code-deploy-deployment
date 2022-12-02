@@ -20,7 +20,9 @@ echo $s3_location : echos bucket name through bash var
 
 
 ## start of the code deploy section
-deploy_desc=${INPUT_DESCRIPTION_FOR_DEPLOYMENT}
+temp_deploy_desc=${INPUT_DESCRIPTION_FOR_DEPLOYMENT}
+deploy_desc="\"$temp_deploy_desc\""
+
 app_name=${INPUT_APPLICATION_NAME}
 deploy_name=${INPUT_DEPLOYMENT_GROUP_NAME}
 deploy_config_name=${INPUT_DEPLOYMENT_CONFIG_NAME}
