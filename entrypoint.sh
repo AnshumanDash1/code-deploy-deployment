@@ -37,7 +37,7 @@ echo $bundle_type
 
 ETAG=`aws s3api head-object --bucket $s3_bucket_name --key $s3_location --query ETag --output text`
 aws deploy create-deployment \
-  --description $deploy_desc \
+  --description "deployment through code deploy" \
   --application-name $app_name \
   --deployment-group-name $deploy_name \
   --deployment-config-name $deploy_config_name \
